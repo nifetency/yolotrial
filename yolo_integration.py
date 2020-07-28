@@ -25,7 +25,7 @@ with open('coco.names','r') as f:
     classes = f.read().splitlines()
 
 
-cap = cv2.VideoCapture(0)
+#cap = cv2.VideoCapture(0)
 font = cv2.FONT_HERSHEY_PLAIN
 colors = np.random.uniform(0, 255, size=(100, 3))
 try:
@@ -51,7 +51,7 @@ try:
             img.set_data(image)
 
         t = time.time()
-        _, img = cap.read()
+        _, img = image.read()
         height, width, _ = img.shape
 
         blob = cv2.dnn.blobFromImage(img, 1 / 255, (416, 416), (0, 0, 0), swapRB=True, crop=False)
@@ -105,7 +105,7 @@ try:
 
 finally:
 
-    cap.release()
+    image.release()
     cv2.destroyAllWindows()
 
     connection.close()
